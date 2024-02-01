@@ -19,7 +19,6 @@ theme:
   - united
 ---
 
-
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
@@ -135,7 +134,7 @@ data |>
 
 # Line chart (simple)
 
-```{r, out.width='100%'}
+```{r warning=FALSE, out.width='100%'}
 library(babynames)
 library(dplyr)
 
@@ -159,7 +158,6 @@ data |>
 
 ```
 
-
 # Line chart (faceted)
 
 ```{r, fig.height=8, out.width='100%'}
@@ -175,11 +173,11 @@ tmp |>
   geom_line(data = tmp |> dplyr::select(-name), 
                aes(group = name2),
                color = "grey", 
-               size = 0.5, 
+               linewidth = 0.5, 
                alpha = 0.5) +
   geom_line(aes(color = name), 
                color = RR_dark_blue, 
-               size = 1.2 )+
+               linewidth = 1.2)+
   scale_color_RR() +
   facet_wrap(~name) +
   theme(axis.line = element_blank()) +
@@ -211,6 +209,7 @@ data |>
 ```
 
 ## Red
+
 ```{r, out.width='100%'}
 data |> 
   ggplot(aes(X, 

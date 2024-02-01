@@ -1,4 +1,11 @@
 url: https://riksrevisjonen.github.io/rrplot/
+articles:
+ - title: "Vignette"
+   navbar: ~
+   desc: >
+     More examples using rrplot.
+   contents:
+      - vignette
 template:
   bootstrap: 5
 
