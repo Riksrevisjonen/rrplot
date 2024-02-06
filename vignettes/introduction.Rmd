@@ -1,5 +1,5 @@
 ---
-title: "Vignette"
+title: "Introduction"
 format:
   html:
     fig-height: 5
@@ -10,23 +10,32 @@ format:
     toc-title: Innhold
     embed-resources: true
 editor: visual
-date: now
 engine: knitr
 number-sections: true
-output:
-  html_document
 theme: 
   - united
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{introduction}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
 ```{r, include = FALSE}
+options(rmarkdown.html_vignette.check_title = FALSE)
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
-library(rrplot)
-library(ggplot2)
+```
 
+This vignette provides examples on how to use different plotting functions.
+
+```{r, eval=TRUE, message=FALSE}
+library(dplyr)
+library(ggplot2)
+library(babynames)
+library(rrplot)
 ```
 
 # Bar chart
@@ -48,7 +57,6 @@ mtcars |>
 ## Example 1
 
 ```{r, out.width='100%'}
-
 iris |> 
   ggplot(aes(x = Sepal.Length, 
              y = Sepal.Width, 
@@ -65,7 +73,6 @@ iris |>
 ## Example 2
 
 ```{r, out.width='100%'}
-
 mpg |> 
   ggplot(aes(cty, 
              hwy, 
@@ -73,7 +80,6 @@ mpg |>
   theme_RR() +
   geom_jitter_RR() +
   scale_color_RR()
-
 ```
 
 # Scatter plot (continuous palette)
@@ -81,7 +87,6 @@ mpg |>
 ## Red
 
 ```{r, out.width='100%'}
-
 mtcars |> 
   ggplot(aes(x = hp, 
              y = mpg,
@@ -135,10 +140,8 @@ data |>
 # Line chart (simple)
 
 ```{r warning=FALSE, out.width='100%'}
-library(babynames)
-library(dplyr)
-
-# Load dataset from github
+# Load dataset
+data("babynames")
 data <- babynames |> 
   filter(name %in% c("Mary", "Ashley", "Amanda",
                      "Jessica", "Patricia", "Linda", 
@@ -154,8 +157,6 @@ data |>
   theme_RR() +  
   geom_line_RR() +
   scale_color_RR()
-
-
 ```
 
 # Line chart (faceted)
@@ -205,7 +206,6 @@ data |>
   geom_tile() + 
   theme_RR() +
   scale_fill_continuous_RR_blue()
-
 ```
 
 ## Red
@@ -218,5 +218,4 @@ data |>
   geom_tile() + 
   theme_RR() +
   scale_fill_continuous_RR_red()
-
 ```
